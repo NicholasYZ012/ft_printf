@@ -24,4 +24,7 @@ fclean: clean
 
 re: fclean all
 
+libft.a:
+	$(MAKE) libonly -C ./libft/
+
 .PHONY: all clean fclean re
