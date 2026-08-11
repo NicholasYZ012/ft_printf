@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/08 11:50:22 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/11 17:38:49 by nilim            ###   ########.fr       */
+/*   Created: 2026/08/11 12:42:30 by nilim             #+#    #+#             */
+/*   Updated: 2026/08/11 17:37:05 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	parse(const char *format, t_options *opts)
 {
-	va_list		args;
-	t_options	*options;
+	int	i;
 
-	va_start(args, format);
-	options  = malloc(sizeof(t_options));
-	while (*format)
+	i = 0;
+	while (format[i])
 	{
-		if (*format == '%')
+		i++;
+		if (ft_strchr("cspdiuxX%", format[i]))
 		{
-			format += parse(format, options);
-			if (options->specifier == 'i')
-			{
-				ft_putstr_fd(ft_itoa(va_arg(args, int)), 1);
-				format++;
-			}
+			opts->specifier = format[i];
+			return (i++);
 		}
-		ft_putchar_fd(*format, 1);
-		format++;
 	}
-	va_end(args);
-	return (1);
+	return (0);
 }

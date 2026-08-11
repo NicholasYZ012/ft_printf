@@ -1,11 +1,12 @@
+# cc -L libft -I. ft_printf.c -lft
 NAME := libftprintf.a
 
 # Sources and objects
-SRCS := ft_printf.c
+SRCS := ft_printf.c parse.c
 OBJ := $(SRCS:%.c=%.o)
 
 # Compiler 
-CC := cc 
+CC := cc
 CFLAGS := -Wall -Werror -Wextra
 
 all: $(NAME)
@@ -14,7 +15,7 @@ $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $^ -o $@
+	$(CC) -c $(CFLAGS) $^ $(LIBS) -o $@
 
 clean:
 	rm -f $(OBJ)
@@ -24,7 +25,7 @@ fclean: clean
 
 re: fclean all
 
-libft.a:
+libft:
 	$(MAKE) libonly -C ./libft/
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
