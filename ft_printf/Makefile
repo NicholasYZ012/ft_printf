@@ -2,12 +2,12 @@
 NAME := libftprintf.a
 
 # Sources and objects
-SRCS := ft_printf.c parse.c
+SRCS := ft_printf.c parse.c specifier_handler.c
 OBJ := $(SRCS:%.c=%.o)
 
 # Compiler 
 CC := cc
-CFLAGS := -Wall -Werror -Wextra
+CFLAGS := -Wall -Werror -Wextra -g
 
 all: $(NAME)
 
@@ -29,3 +29,4 @@ libft:
 	$(MAKE) libonly -C ./libft/
 
 .PHONY: all clean fclean re libft
+.SILENT:

@@ -1,6 +1,6 @@
-// #include "../libft/libft.h"
-#include "ft_printf.h"
+#include "../libft/libft.h"
+#include "../ft_printf.h"
 
 int main(){
-	ft_printf("hello, my age is w", 13);
+	ft_printf("my age is %i. But my dad is %i %w", 13, 90);
 }

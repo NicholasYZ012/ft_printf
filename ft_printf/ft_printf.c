@@ -6,10 +6,11 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:50:22 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/11 17:38:49 by nilim            ###   ########.fr       */
+/*   Updated: 2026/08/11 22:01:04 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
@@ -21,17 +22,13 @@ int	ft_printf(const char *format, ...)
 	options  = malloc(sizeof(t_options));
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%' && parse(format, options))
 		{
-			format += parse(format, options);
-			if (options->specifier == 'i')
-			{
-				ft_putstr_fd(ft_itoa(va_arg(args, int)), 1);
-				format++;
-			}
+			format += options->prog;
+			specifier_handler(options, args);
 		}
-		ft_putchar_fd(*format, 1);
-		format++;
+		else
+			ft_putchar_fd(*format++, 1);
 	}
 	va_end(args);
 	return (1);
