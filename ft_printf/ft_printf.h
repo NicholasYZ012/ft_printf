@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:48:48 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/11 22:08:45 by nilim            ###   ########.fr       */
+/*   Updated: 2026/08/12 12:01:39 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_options
 int		ft_printf(const char *format, ...);
 int		parse(const char *format, t_options *opts);
 void	specifier_handler(t_options *opts, va_list args);
+char	*ft_uitoa(unsigned int n);
 
 #endif

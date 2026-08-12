@@ -2,7 +2,7 @@
 NAME := libftprintf.a
 
 # Sources and objects
-SRCS := ft_printf.c parse.c specifier_handler.c
+SRCS := ft_printf.c parse.c specifier_handler.c ft_uitoa.c
 OBJ := $(SRCS:%.c=%.o)
 
 # Compiler 

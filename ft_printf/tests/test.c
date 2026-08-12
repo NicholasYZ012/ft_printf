@@ -2,5 +2,5 @@
 #include "../ft_printf.h"
 
 int main(){
-	ft_printf("my age is %i. But my dad is %i %w", 13, 90);
+	ft_printf("my age is %s. But my dad is %u%%", "thirteen", 4294967290);
 }
