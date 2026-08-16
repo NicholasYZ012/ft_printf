@@ -9,12 +9,11 @@ Flags:5 (-+0 #)
 	2.	+: print positive sign
 	3.	0: pad number with zeros 
 	4.	\s: insert space before positive numbers (to align with negative numbers)
-	5.	#: adds prefix (0x hex; 0 octal; force decimal point, float)
+	5.	#: adds prefix (0x hex)
 
 Width: an integer specifying minimum number of chars to print
 
 Precision: 
-%f: limit digits after decimal point
 %i: min digit counter
 %s: cuts off string at maximum length
 
@@ -27,4 +26,8 @@ u: unsigned int
 x: hex 
 X: HEX
 %: prints out %
+
+Current issue:
+might need to implement flag for precision setting in order to differentiate precision 0 and unset precision
+
  -->
