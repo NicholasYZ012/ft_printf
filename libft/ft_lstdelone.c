@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 13:56:39 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/05 14:11:25 by nilim            ###   ########.fr       */
+/*   Updated: 2026/08/12 16:58:44 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
+	if (lst == NULL)
+		return ;
 	del(lst->content);
 	free(lst);
 }

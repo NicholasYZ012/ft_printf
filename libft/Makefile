@@ -30,10 +30,17 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
+test: 
+	$(MAKE) auto -C tests/
+	mv tests/$@ ./
+
+tclean:
+	rm test
+	
 libonly: all clean
 
-.PHONY: all clean fclean re libonly
+.PHONY: all clean fclean re test tclean libonly

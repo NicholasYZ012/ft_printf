@@ -6,10 +6,11 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 17:04:09 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/05 21:38:58 by nilim            ###   ########.fr       */
+/*   Updated: 2026/08/12 22:12:52 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 static int	ft_power(int r, int n)
@@ -47,11 +48,10 @@ char	*ft_itoa(int n)
 	int		i;
 	int		tens;
 	long	n2;
-	char	*str;
+	char	str[12];
 
 	i = 0;
 	n2 = (long)n;
-	str = malloc(12 * sizeof(char));
 	if (n2 < 0)
 	{
 		str[i] = '-';
@@ -66,5 +66,5 @@ char	*ft_itoa(int n)
 		tens--;
 	}
 	str[i] = '\0';
-	return (str);
+	return (ft_strdup(str));
 }

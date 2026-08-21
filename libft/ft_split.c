@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 14:27:28 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/07 15:25:09 by nilim            ###   ########.fr       */
+/*   Updated: 2026/08/19 10:33:54 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static int	ft_wordcounter(char *str, char c)
 
 	i = 0;
 	w = 0;
-	if (str[0] != c && str[0])
+	if (str[0] && str[0] != c)
 		w++;
-	while (str[i + 1] && str[0])
+	while (str[0] && str[i + 1])
 	{
 		if (str[i] == c && str[i + 1] != c && str[i + 1])
 			w++;
@@ -82,6 +82,8 @@ char	**ft_split(const char *s1, char c)
 	char	**arr;
 	int		w;
 
+	if (s1[0] == '\0')
+		return (ft_calloc(1, sizeof(char *)));
 	clean = ft_strtrim(s1, &c);
 	if (clean == NULL)
 		return (NULL);
