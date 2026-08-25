@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:48:48 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/15 16:28:22 by nilim            ###   ########.fr       */
+/*   Updated: 2026/08/24 10:31:28 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,5 @@ void	ft_putarg(t_options *opts, va_list args);
 void	ft_setarglen(t_options *opts, va_list args);
 void	ft_putuint_fd(unsigned int n, char format, int fd);
 void	ft_putptr_fd(uintptr_t n, int fd);
-
-void	strchk(t_options *opts);
 
 #endif

@@ -1,9 +1,6 @@
 <!-- 
 %[flags][width][.precision]type
 
-High level:
-	1.	Separate into normal strings and format strings 
-
 Flags:5 (-+0 #)
 	1.	-: left justify
 	2.	+: print positive sign
@@ -55,4 +52,5 @@ The function works according to the following procedures:
 4. When they have been dealt with accordingly, the variadic arguments are called based on the specifier and printed out.
 5. If required, then the second phase of flag handling will then commence.
 6. These procedures loop until the NULL terminator of the string is reached.
+
 # Resources
