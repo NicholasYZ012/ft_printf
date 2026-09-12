@@ -2,9 +2,9 @@ NAME := test
 
 # Compiler 
 CC := cc 
-CFLAGS := -I../ -L../libft/ -L../
+CFLAGS := -I../ -L../
 CDEBUG := -Wall -Werror -Wextra -g 
-LIBS := -lftprintf -lft
+LIBS := -lftprintf
 
 all: libftprintf $(NAME) 
 

@@ -2,7 +2,7 @@
 NAME := libftprintf.a
 
 # Sources and objects
-SRCS := ft_printf.c parse.c ft_putarg.c ft_setarglen.c\
+SRCS := ft_printf.c parse.c putarg.c setarglen.c\
 		ft_putuint_fd.c ft_putptr_fd.c 
 OBJ := $(SRCS:%.c=%.o)
 
@@ -12,8 +12,8 @@ CFLAGS := -Wall -Werror -Wextra -g
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rcs $@ $^
+$(NAME): libft $(OBJ) 
+	ar rs $@ $(OBJ)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $^ $(LIBS) -o $@
@@ -28,6 +28,7 @@ re: fclean all
 
 libft:
 	$(MAKE) libonly -C ./libft/
+	cp libft/libft.a ./libftprintf.a
 
-.PHONY: all clean fclean re libft
+.PHONY: $(NAME) all clean fclean re libft
 .SILENT:

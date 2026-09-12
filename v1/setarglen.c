@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setarglen.c                                     :+:      :+:    :+:   */
+/*   setarglen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 22:47:58 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/15 16:58:58 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/12 13:17:48 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static unsigned int	intlen(t_options *opts, int n)
 	unsigned int	c;
 
 	c = 0;
-	if (n < 0)
+	if (n < 0 && ++c)
 		opts->numsign = -1;
 	else if (n == 0)
 		return (1);
@@ -63,12 +63,12 @@ static unsigned int	uiptrlen(uintptr_t n)
 	return (c);
 }
 
-void	ft_setarglen(t_options *opts, va_list oriargs)
+void	setarglen(t_options *opts, va_list oriargs)
 {
 	va_list	args;
 
 	va_copy(args, oriargs);
-	if (ft_strchr("di", opts->spec))
+	if (ft_strchr("id", opts->spec))
 		opts->arglen = intlen(opts, va_arg(args, int));
 	else if (ft_strchr("c%", opts->spec))
 		opts->arglen = 1;
@@ -86,6 +86,6 @@ void	ft_setarglen(t_options *opts, va_list oriargs)
 		opts->width -= 2;
 	if (ft_strchr("idu", opts->spec) && (opts->positive || opts->space))
 		opts->width--;
-	if (ft_strchr("idupxX", opts->spec) && opts->prec > (int)opts->arglen)
+	if (ft_strchr("iduxX", opts->spec) && opts->prec > (int)opts->arglen)
 		opts->width -= opts->prec - (int)opts->arglen;
 }

@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 12:42:30 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/15 16:27:38 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/12 12:50:36 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	parse(const char *format, t_options *opts)
 		flag_parser(format[opts->prog], opts);
 	while (ft_isdigit(format[opts->prog]))
 		opts->width = (opts->width * 10) + (format[opts->prog++] - '0');
+	opts->oriwidth = opts->width;
 	if (format[opts->prog] == '.' && ++opts->prec == 0)
 	{
 		if (!ft_isdigit(format[opts->prog + 1]))

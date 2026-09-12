@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putarg.c                                        :+:      :+:    :+:   */
+/*   putarg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/15 16:58:08 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/12 13:12:17 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	putposnum_fd(t_options *opts, int nb, int fd)
 		return ;
 	if (++opts->numsign == 0 && nb != -2147483648)
 		ft_putchar_fd('-', 1);
-	if (nb > 0)
+	if (nb >= 0)
 		return (ft_putnbr_fd(nb, fd));
 	if (nb < 0)
 		ft_putnbr_fd(nb *= -1, fd);
@@ -74,12 +74,15 @@ static void	flaghandler(t_options *opts, va_list oriargs)
 		else if (opts->spec == 'X')
 			ft_putstr_fd("0X", 1);
 	}
-	while (ft_strchr("diupxX", opts->spec) && opts->prec-- > (int)opts->arglen)
+	while (ft_strchr("diupxX", opts->spec) && opts->prec > (int)opts->arglen)
+	{
 		ft_putchar_fd('0', 1);
+		opts->prec--;
+	}
 	va_end(args);
 }
 
-void	ft_putarg(t_options *opts, va_list args)
+void	putarg(t_options *opts, va_list args)
 {
 	if (opts->spec == '%')
 		return (ft_putchar_fd('%', 1));
@@ -95,4 +98,5 @@ void	ft_putarg(t_options *opts, va_list args)
 	else if (opts->spec == 'p')
 		ft_putptr_fd((uintptr_t)va_arg(args, void *), 1);
 	dashhandler(opts, 1);
+	debug(opts);
 }

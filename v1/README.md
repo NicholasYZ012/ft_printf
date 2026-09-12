@@ -43,14 +43,23 @@ Standard commands (Usage: make *command*):
 - re: updates the library and objects by removing them and recompiling and archiving again
 
 # ft_printf
-The function works according to the following procedures:
-
 1. The inputted string is searched for placeholders char by char.
 2. Each char that isn't after a placeholder is printed out.
-2. If found, then the following chars are parsed for flags, width, precision, and the specifier and the information is then stored in a struct.
-3. Using variables in the struct, the flags, width and precision are handled accordingly.
-4. When they have been dealt with accordingly, the variadic arguments are called based on the specifier and printed out.
-5. If required, then the second phase of flag handling will then commence.
-6. These procedures loop until the NULL terminator of the string is reached.
+3. If found, then the following chars are parsed for flags, width, precision, and the specifier and the information is then stored in a struct.
+4. Using variables in the struct, the flags, width and precision are handled accordingly.
+5. When they have been dealt with accordingly, the variadic arguments are called based on the specifier and printed out.
+6. If required, then the second phase of flag handling will then commence (only occurs for '-' flag as remaining chars need to be space-padded).
+7. These procedures loop until the NULL terminator of the string is reached.
+
+## Calculations
+### Padding calculation
+1. Character length of variadic arguments are calculated
+2. Arglen, prefix length (0x, 0X, +, \s) are subtracted from width value
+3. If precision is specified, if precision is greater than arglen, 
+
+## Techniques used
+1. line saving via var++ or ++var within condition checks.
+2. since the string is checked char by char, strchr can be used to 'catch' multiple chars by putting the target chars in str, and the format string's char as c.
+3. a struct is used as a variable bank
 
 # Resources

@@ -44,3 +44,4 @@ tclean:
 libonly: all clean
 
 .PHONY: all clean fclean re test tclean libonly
+.SILENT: 
