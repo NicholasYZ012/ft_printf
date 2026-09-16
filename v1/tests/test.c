@@ -3,8 +3,10 @@
 
 int main(){
 
-	printf("RV=%d\n", printf("%13.6i\n", -21474) - 1);
-	ft_printf("%13.6i\n", -21474);
+	// printf("RV=%d\n", printf("%8.6i\n", 21474) - 1);
+	// ft_printf("%8.6i\n", 21474);
+	printf("%- 10d\n", 100);
+
 	// ft_printf("### FT_PRINTF TEST ###\n");
 
 	// ft_printf(" %c %c %c \n", '0', 0, '1');
@@ -90,8 +92,8 @@ int main(){
     // ft_printf("|%p|\n", NULL);
     // printf("|%p|\n\n", NULL);
 
-    // ft_printf("|%20p|\n", (void *)0x123abc);
-    // printf("|%20p|\n\n", (void *)0x123abc);
+    // ft_printf("|%+20p|\n", (void *)0x123abc);
+    // printf("|%+20p|\n\n", (void *)0x123abc);
 
     // ft_printf("|%-20p|\n", (void *)0x123abc);
     // printf("|%-20p|\n\n", (void *)0x123abc);

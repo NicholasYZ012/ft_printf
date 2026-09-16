@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/12 13:12:17 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/12 13:39:05 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	putposnum_fd(t_options *opts, int nb, int fd)
 {
 	if (opts->prec == 0)
 		return ;
-	if (++opts->numsign == 0 && nb != -2147483648)
-		ft_putchar_fd('-', 1);
 	if (nb >= 0)
 		return (ft_putnbr_fd(nb, fd));
 	if (nb < 0)
@@ -60,7 +58,6 @@ static void	flaghandler(t_options *opts, va_list oriargs)
 	va_list	args;
 
 	va_copy(args, oriargs);
-	dashhandler(opts, 0);
 	if (opts->positive && opts->spec != 'u')
 		if (va_arg(args, int) >= 0 && ft_strchr("dip", opts->spec))
 			ft_putchar_fd('+', 1);
@@ -76,6 +73,8 @@ static void	flaghandler(t_options *opts, va_list oriargs)
 	}
 	while (ft_strchr("diupxX", opts->spec) && opts->prec > (int)opts->arglen)
 	{
+		if (++opts->numsign == 0)
+			ft_putchar_fd('-', 1);
 		ft_putchar_fd('0', 1);
 		opts->prec--;
 	}
@@ -86,6 +85,7 @@ void	putarg(t_options *opts, va_list args)
 {
 	if (opts->spec == '%')
 		return (ft_putchar_fd('%', 1));
+	dashhandler(opts, 0);
 	flaghandler(opts, args);
 	if (opts->spec == 'i' || opts->spec == 'd')
 		putposnum_fd(opts, va_arg(args, int), 1);
@@ -98,5 +98,5 @@ void	putarg(t_options *opts, va_list args)
 	else if (opts->spec == 'p')
 		ft_putptr_fd((uintptr_t)va_arg(args, void *), 1);
 	dashhandler(opts, 1);
-	debug(opts);
+	// debug(opts);
 }
