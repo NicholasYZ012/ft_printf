@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/17 10:30:26 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/17 12:49:37 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ static void	putprecstr_fd(t_options *opts, char *str)
 		pf_putchar_fd(*str++, opts);
 }
 
-static void	putposnum_fd(t_options *opts, int nb)
+static void	putposnum_fd(t_options *opts, int n)
 {
+	long long	nb;
+	
+	nb = (long long)n;
 	if (opts->prec == 0)
 		return ;
 	if (nb >= 0)
@@ -71,13 +74,10 @@ static void	flaghandler(t_options *opts)
 		pf_putstr_fd("0x", opts);
 	else if ((opts->flag & PND) != 0 && opts->spec == 'X')
 		pf_putstr_fd("0X", opts);
-	while (ft_strchr("diuxX", opts->spec) && opts->prec > (int)opts->arglen)
-	{
-		if (opts->numsign == -1 && ++opts->numsign == 0)
-			pf_putchar_fd('-', opts);
+	if (opts->numsign == -1 && ++opts->numsign == 0)
+		pf_putchar_fd('-', opts);
+	while (ft_strchr("diuxX", opts->spec) && opts->prec-- > (int)opts->arglen)
 		pf_putchar_fd('0', opts);
-		opts->prec--;
-	}
 }
 
 void	putarg(t_options *opts, va_list args)

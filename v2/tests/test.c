@@ -1,12 +1,8 @@
 #include "../ft_printf.h"
 #include <stdio.h>
 
-int main(){
-
-	// printf("RV=%d\n", printf("%8.6i\n", 21474) - 1);
-	// ft_printf("REAL ONE %\n");
-	// ft_printf("RV=%d\n", ft_printf("%8.6i\n", 21474) - 1);
-
+void	test()
+{
 	ft_printf("### FT_PRINTF TEST ###\n");
 
 	ft_printf(" %c %c %c \n", '0', 0, '1');
@@ -109,5 +105,12 @@ int main(){
 
     ft_printf("|%-10%|\n");
     printf("|%-10%|\n\n");
+}
 
+int main(){
+
+	// ft_printf("REAL ONE %\n");
+	// ft_printf("RV=%d\n", ft_printf("%8.6i\n", -2147483648) - 1);
+
+	test();
 }
