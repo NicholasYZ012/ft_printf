@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:48:48 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/17 12:30:20 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/17 15:05:39 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	pf_putnbr_fd(long long n, t_options *opts);
 void	ft_putuint_fd(unsigned int n, char format, t_options *opts);
 void	ft_putptr_fd(uintptr_t n, t_options *opts);
 
+void	debug(t_options *opts);
 
 #endif

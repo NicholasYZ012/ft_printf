@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/17 12:49:37 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/17 15:09:32 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ static void	flaghandler(t_options *opts)
 		pf_putstr_fd("0X", opts);
 	if (opts->numsign == -1 && ++opts->numsign == 0)
 		pf_putchar_fd('-', opts);
-	while (ft_strchr("diuxX", opts->spec) && opts->prec-- > (int)opts->arglen)
+	while (ft_strchr("diuxX", opts->spec) && opts->prec > (int)opts->arglen)
+	{
 		pf_putchar_fd('0', opts);
+		opts->prec--;
+	}
 }
 
 void	putarg(t_options *opts, va_list args)
