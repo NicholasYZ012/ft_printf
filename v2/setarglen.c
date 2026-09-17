@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 22:47:58 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/15 12:56:26 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/17 10:30:18 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ static unsigned int	uiptrlen(uintptr_t n)
 
 void	setarglen(t_options *opts, va_list oriargs)
 {
-	va_list	args;
+	va_list			args;
+	unsigned int	n;
 
 	va_copy(args, oriargs);
 	if (ft_strchr("id", opts->spec))
@@ -89,11 +90,13 @@ void	setarglen(t_options *opts, va_list oriargs)
 	else if (opts->spec == 'p')
 		opts->arglen = uiptrlen((uintptr_t)va_arg(args, void *));
 	else if (ft_strchr("uxX", opts->spec))
-		opts->arglen = uintlen(va_arg(args, unsigned int), opts->spec);
+	{
+		n = va_arg(args, unsigned int);
+		if (n == 0)
+			opts->flag &= ~(PND);
+		opts->arglen = uintlen(n, opts->spec);
+	}
 	va_end(args);
-	// Issue
-	if ((opts->flag & PND) != 0)
-		opts->arglen += 2;
 }
 
 	// opts->width -= opts->arglen;

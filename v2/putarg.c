@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/15 12:53:55 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/17 10:30:26 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	dashwidthhandler(t_options *opts, int stage)
 		}
 		else
 		{
+			if ((opts->flag & PND) != 0)
+				opts->width -= 2;
 			if (opts->arglen >= opts->prec)
 				while (opts->width > opts->arglen + opts->count)
 					pf_putchar_fd(' ', opts);
@@ -67,7 +69,7 @@ static void	flaghandler(t_options *opts)
 		pf_putchar_fd(' ', opts);
 	if ((opts->flag & PND) != 0 && ft_strchr("xp", opts->spec))
 		pf_putstr_fd("0x", opts);
-	else if (opts->spec == 'X')
+	else if ((opts->flag & PND) != 0 && opts->spec == 'X')
 		pf_putstr_fd("0X", opts);
 	while (ft_strchr("diuxX", opts->spec) && opts->prec > (int)opts->arglen)
 	{

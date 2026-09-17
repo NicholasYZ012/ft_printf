@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 12:42:30 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/15 12:54:31 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/17 10:13:50 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,9 @@ int	parse(const char *format, t_options *opts)
 		flag_parser(format[opts->prog], opts);
 	while (ft_isdigit(format[opts->prog]))
 		opts->width = (opts->width * 10) + (format[opts->prog++] - '0');
-	// Keeps original width in case it's altered
-	opts->oriwidth = opts->width;
 	if (format[opts->prog] == '.' && ++opts->prec == 0)
-	{
-		// Possible redundancy
-		if (!ft_isdigit(format[opts->prog + 1]))
-			opts->prec = 0;
 		while (ft_isdigit(format[++(opts->prog)]))
 			opts->prec = (opts->prec * 10) + (format[opts->prog] - '0');
-	}
 	if (ft_strchr("cspdiuxX%", format[opts->prog]))
 	{
 		opts->spec = format[opts->prog];
