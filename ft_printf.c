@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:50:22 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/12 12:35:48 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/18 09:57:45 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 
 void	debug(t_options *opts)
 {
-	printf("\nDEBUG\n");
-	printf("width: %d\n", opts->width);
 	printf("prec: %d\n", opts->prec);
-	printf("arglen: %u\n", opts->arglen);
-	printf("EBUG\n");
 }
 
 int	ft_printf(const char *format, ...)
@@ -29,6 +25,7 @@ int	ft_printf(const char *format, ...)
 	unsigned int	printsum;
 	t_options		*options;
 
+	printsum = 0;
 	va_start(args, format);
 	options = ft_calloc(1, sizeof(t_options));
 	while (*format)
@@ -37,16 +34,12 @@ int	ft_printf(const char *format, ...)
 		{
 			format += options->prog;
 			setarglen(options, args);
-			putarg(options, args);
+			printsum += putarg(options, args);
 		}
 		else
-		{
-			ft_putchar_fd(*format++, 1);
-			options->count++;
-		}
+			printsum += pf_putchar_fd(*format++, options);
 	}
 	va_end(args);
-	printsum = options->count;
 	free(options);
 	return (printsum);
 }

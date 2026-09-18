@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   pf_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/01 12:01:10 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/19 10:32:33 by nilim            ###   ########.fr       */
+/*   Created: 2026/09/12 19:07:13 by nilim             #+#    #+#             */
+/*   Updated: 2026/09/18 09:54:25 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include <unistd.h>
 
-char	*ft_strrchr(const char *str, int c)
+void	pf_putstr_fd(char *s, t_options *opts)
 {
-	int		n;
-
-	n = ft_strlen(str);
-	while (n >= 0)
-	{
-		if (str[n] == (char)c)
-			return ((char *)&(str[n]));
-		n--;
-	}
-	return (NULL);
+	if (s == NULL)
+		return (pf_putstr_fd("(null)", opts));
+	while (*s)
+		pf_putchar_fd(*s++, opts);
 }

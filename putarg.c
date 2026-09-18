@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/17 15:09:32 by nilim            ###   ########.fr       */
+/*   Updated: 2026/09/18 09:56:48 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	flaghandler(t_options *opts)
 	}
 }
 
-void	putarg(t_options *opts, va_list args)
+int	putarg(t_options *opts, va_list args)
 {
 	if (opts->spec == '%')
 		return (pf_putchar_fd('%', opts));
@@ -100,4 +100,5 @@ void	putarg(t_options *opts, va_list args)
 	else if (opts->spec == 'p')
 		ft_putptr_fd((uintptr_t)va_arg(args, void *), opts);
 	dashwidthhandler(opts, 1);
+	return (opts->count);
 }

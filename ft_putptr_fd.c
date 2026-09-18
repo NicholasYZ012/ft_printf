@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/29 09:01:46 by nilim             #+#    #+#             */
-/*   Updated: 2026/08/12 16:21:55 by nilim            ###   ########.fr       */
+/*   Created: 2026/08/14 11:15:55 by nilim             #+#    #+#             */
+/*   Updated: 2026/09/18 10:15:03 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft/libft.h"
+#include "ft_printf.h"
+#include <stdint.h>
 
-size_t	ft_strlen(const char *s)
+void	ft_putptr_fd(uintptr_t n, t_options *opts)
 {
-	size_t	length;
-
-	length = 0;
-	while (s[length])
-		length++;
-	return (length);
+	if (n == 0)
+		return (pf_putstr_fd("(nil)", opts));
+	if (n > 15)
+		ft_putptr_fd(n / 16, opts);
+	if (n % 16 < 10)
+		pf_putchar_fd('0' + (n % 16), opts);
+	else
+		pf_putchar_fd('a' + (n % 16 - 10), opts);
 }
