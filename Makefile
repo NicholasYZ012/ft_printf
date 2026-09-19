@@ -10,7 +10,7 @@ OBJ := $(SRCS:%.c=%.o)
 
 # Compiler 
 CC := cc
-CFLAGS := -Wall -Werror -Wextra -g
+CFLAGS := -Wall -Werror -Wextra
 
 all: $(NAME)
 
