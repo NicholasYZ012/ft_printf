@@ -55,6 +55,7 @@ Standard commands (Usage: make *command*):
 7. These procedures loop until the NULL terminator of the string is reached.
 
 ## Flag Handling
+Bitwise operations are used to manipulate bits that represent flags
 
 ### Flag Validity
 dash (-): valid for all
@@ -63,14 +64,16 @@ zero (0): valid for all
 space ( ): di
 pound (#): xX
 
-### Padding calculation
-1. Character length of variadic arguments are calculated
-2. Arglen, prefix length (0x, 0X, +, \s) are subtracted from width value
-3. If precision is specified, if precision is greater than arglen, 
-
 ## Techniques used
 1. line saving via var++ or ++var within condition checks.
 2. since the string is checked char by char, strchr can be used to 'catch' multiple chars by putting the target chars in str, and the format string's char as c.
 3. a struct is used as a variable bank
 
 # Resources
+1. man-db 2.13.1
+2. <a href="https://pubs.opengroup.org/onlinepubs/9799919799/" target="_blank">The Open Group Base Specifications</a>
+3. <a href="https://stackexchange.com/" target="_blank">Stack Exchange</a>
+4. 42KL peers
+5. Google AI summary
+6. Claude AI - recommendation on a streamlined flag handling process
+7. <a href="https://www.geeksforgeeks.org" target="_blank">GeeksforGeeks</a> - Bitwise operations tutorial
