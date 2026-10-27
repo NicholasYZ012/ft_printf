@@ -6,18 +6,12 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:50:22 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/18 09:57:45 by nilim            ###   ########.fr       */
+/*   Updated: 2026/10/27 13:34:04 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
-#include <stdio.h>
-
-void	debug(t_options *opts)
-{
-	printf("prec: %d\n", opts->prec);
-}
 
 int	ft_printf(const char *format, ...)
 {
@@ -43,3 +37,13 @@ int	ft_printf(const char *format, ...)
 	free(options);
 	return (printsum);
 }
+
+// #include <stdio.h>
+
+// void	debug(t_options *opts)
+// {
+// 	printf("prec: %d\n", opts->prec);
+// 	printf("arglen: %d\n", opts->arglen);
+// 	printf("count: %d\n", opts->count);
+// 	printf("width: %d\n", opts->width);
+// }

@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 22:47:58 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/18 10:14:50 by nilim            ###   ########.fr       */
+/*   Updated: 2026/10/27 13:19:48 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ void	setarglen(t_options *opts, va_list oriargs)
 			opts->flag &= ~(PND);
 		opts->arglen = uintlen(n, opts->spec);
 	}
+	if (opts->numsign == -1)
+		opts->arglen--;
 	va_end(args);
 }

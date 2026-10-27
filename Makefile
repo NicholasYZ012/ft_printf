@@ -32,5 +32,7 @@ libft:
 	$(MAKE) libonly -C ./libft/
 	cp libft/libft.a ./libftprintf.a
 
+bonus: all
+
 .PHONY: $(NAME) all clean fclean re libft
 .SILENT:

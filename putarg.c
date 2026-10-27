@@ -6,7 +6,7 @@
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 21:39:07 by nilim             #+#    #+#             */
-/*   Updated: 2026/09/18 09:56:48 by nilim            ###   ########.fr       */
+/*   Updated: 2026/10/27 13:24:41 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	putprecstr_fd(t_options *opts, char *str)
 static void	putposnum_fd(t_options *opts, int n)
 {
 	long long	nb;
-	
+
 	nb = (long long)n;
 	if (opts->prec == 0)
 		return ;
@@ -66,9 +66,9 @@ static void	dashwidthhandler(t_options *opts, int stage)
 
 static void	flaghandler(t_options *opts)
 {
-	if ((opts->flag & POS) != 0 && opts->numsign > 0)
+	if ((opts->flag & POS) != 0 && opts->numsign >= 0)
 		pf_putchar_fd('+', opts);
-	if ((opts->flag & SPC) != 0)
+	if ((opts->flag & SPC) != 0 && opts->numsign >= 0)
 		pf_putchar_fd(' ', opts);
 	if ((opts->flag & PND) != 0 && ft_strchr("xp", opts->spec))
 		pf_putstr_fd("0x", opts);
